@@ -1,0 +1,6 @@
+    1  history
+    2  cut -f 4,14 amazon_reviews_us_Books_v1_02.tsv | grep 0811828964 | cut -f 2 | tr ",.;'?\":!" ' '  > tmpo
+    3  cat tmpo | sed -e 's/ and / /g' -e 's/ or / /g' -e 's/ if / /g' -e 's/ in / /g' -e 's/ it / /g' > tmpo2
+    4  cat tmpo2 | sed -e 's/ [a-zA-Z] / /g' > tmpo3
+    5  cat tmpo3 | sed -e 's/<[a-z A-Z\/]\+>/ /g' > final.output
+    6  history > cmds.log

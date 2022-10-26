@@ -1,0 +1,29 @@
+Script started on 2022-10-26 01:05:55-04:00
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ 
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ 
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ 
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ history -c
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ 
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ history
+    1  history
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ 
+** Remove punctuations from all review bodies. Choose product ID 0811828964 **
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ cut -f 4,14 amazon_reviews_us_Books_v1_02.tsv | grep 0811828964 | cut -f 2 | tr ",.;'?\":!" ' '  > tmpo
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ 
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ 
+** Remove and, or, if in, it **
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ cat tmpo | sed -e 's/ and / /g' -e 's/ or / /g' -e 's/ if / /g' -e 's/ in / /g' -e 's/ it / /g' > tmpo2
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ 
+** Remove single letters **
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ cat tmpo2 | sed -e 's/ [a-zA-Z] / /g' > tmpo3
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ 
+** Remove html tags **
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ cat tmpo3 | sed -e 's/<[a-z A-Z\/]\+>/ /g' > final.output
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ 
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ history > cmds.log
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ 
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ 
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ 
+]0;rishabh@sjsu:~/ws7[rishabh@sjsu ws7]$ exit
+
+Script done on 2022-10-26 01:07:21-04:00
